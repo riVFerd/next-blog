@@ -4,6 +4,8 @@ import MenuList from "@/components/MenuList";
 import Link from "next/link";
 import Image from "next/image";
 import logoPic from "@/../public/rivferd.png";
+import ToggleDarkMode from "@/components/ToggleDarkMode";
+import SearchBar from "@/components/SearchBar";
 
 export default function Header() {
     const [isSearchBarFixed, setIsSearchBarFixed] = useState(false);
@@ -21,25 +23,19 @@ export default function Header() {
     }, []);
 
     return (
-        <header className="flex flex-col z-50">
-            <nav className="relative flex justify-between items-center bg-primary-light h-16 rounded-b-lg">
+        <header className="flex flex-col z-50 bg-primary-light dark:text-primary-light dark:bg-primary-dark">
+            <nav className="relative flex justify-between items-center bg-white h-16 rounded-b-lg dark:bg-secondary-dark">
                 <div className="flex items-center mx-2">
                     <Image src={logoPic} alt="blog logo" width="48"/>
-                    <Link href="/" className="text-xl font-bold text-primary-dark">riVFerd</Link>
+                    <Link href="/" className="text-xl font-bold text-primary-dark dark:text-primary-light">riVFerd</Link>
                 </div>
-                <MenuList state={isMenuOpen}/>
-                <MenuIcon state={isMenuOpen} setState={setIsMenuOpen} className="bg-primary-dark"/>
+                <MenuList state={isMenuOpen} />
+                <div className="flex items-center gap-4">
+                    <ToggleDarkMode />
+                    <MenuIcon state={isMenuOpen} setState={setIsMenuOpen} className="bg-primary-dark mr-2.5 dark:bg-primary-light" />
+                </div>
             </nav>
-            <div
-                id="search-bar"
-                className={`transition-all duration-300 pt-4 px-8 w-full h-16 z-30 ${isSearchBarFixed && "fixed top-0 pt-0 px-2 h-12 rounded-full mt-2"}`}
-            >
-                <input
-                    type="text"
-                    className="w-full px-4 py-2 border-gray-400 rounded-full h-full"
-                    placeholder="Search"
-                />
-            </div>
+            <SearchBar state={isSearchBarFixed} />
         </header>
     );
 }
