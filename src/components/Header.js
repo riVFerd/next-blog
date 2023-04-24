@@ -6,8 +6,11 @@ import Image from "next/image";
 import logoPic from "@/../public/rivferd.png";
 import ToggleDarkMode from "@/components/ToggleDarkMode";
 import SearchBar from "@/components/SearchBar";
+import {useSelector} from "react-redux";
 
 export default function Header() {
+    const categories = useSelector((state) => state.categories);
+
     const [isSearchBarFixed, setIsSearchBarFixed] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -29,7 +32,7 @@ export default function Header() {
                     <Image src={logoPic} alt="blog logo" width="48"/>
                     <Link href="/" className="text-xl font-bold text-primary-dark dark:text-primary-light">riVFerd</Link>
                 </div>
-                <MenuList state={isMenuOpen} />
+                <MenuList state={isMenuOpen} categories={categories} />
                 <div className="flex items-center gap-4">
                     <ToggleDarkMode />
                     <MenuIcon state={isMenuOpen} setState={setIsMenuOpen} className="bg-primary-dark mr-2.5 dark:bg-primary-light" />

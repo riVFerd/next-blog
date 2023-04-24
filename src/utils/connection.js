@@ -4,9 +4,9 @@ class SanityClient {
     constructor() {
         if (!this.client) {
             this.client = createClient({
-                projectId: process.env.PROJECT_ID,
-                dataset: process.env.DATASET,
-                apiVersion: process.env.API_VERSION,
+                projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+                dataset: process.env.NEXT_PUBLIC_DATASET,
+                apiVersion: process.env.NEXT_PUBLIC_API_VERSION,
                 useCdn: false,
             });
         }
