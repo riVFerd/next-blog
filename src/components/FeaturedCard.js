@@ -1,12 +1,16 @@
 import Image from "next/image";
+import PropTypes from "prop-types";
 
-export default function FeaturedCard() {
+export default function FeaturedCard({post}) {
 
     return (
-        <div id="featured" className="flex flex-col justify-center items-center p-8 text-center dark:text-primary-light">
-            <Image src="https://source.unsplash.com/720x480/?{tech}" alt="featured-img" width="360" height="360" className="rounded-lg"/>
-            <h1 className="text-4xl font-bold mt-4">Featured News</h1>
-            <p className="text-lg mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+        <div id="featured" className="flex flex-col justify-center items-center px-10 py-6 text-center dark:text-primary-light">
+            <Image src={post.imageUrl} alt="featured-img" width="360" height="180" className="rounded-lg"/>
+            <h1 className="text-lg font-bold mt-2">{post.title}</h1>
         </div>
     )
+}
+
+FeaturedCard.prototype = {
+    post: PropTypes.object.isRequired
 }
