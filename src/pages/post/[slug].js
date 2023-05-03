@@ -1,6 +1,9 @@
 import getClient from "@/utils/connection";
 import Image from "next/image";
+<<<<<<< HEAD
 import {PortableText} from "@portabletext/react";
+=======
+>>>>>>> origin/main
 
 export async function getServerSideProps({params}) {
     const post = await getClient().fetch('*[slug.current=="' + params.slug + '"]{title,slug,author,category,content,"imageUrl": thumbnail.asset->url}');
@@ -19,7 +22,10 @@ export default function BlogPost({post}) {
         <div className="flex flex-col items-center gap-4 p-4 dark:text-primary-light">
             <h1 className="font-bold text-xl text-center">{post.title}</h1>
             <Image src={post.imageUrl} alt="post-image" width="360" height="360"/>
+<<<<<<< HEAD
             <PortableText value={post.content}/>
+=======
+>>>>>>> origin/main
         </div>
     )
 }
