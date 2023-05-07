@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+#article > p {
+    padding: 0.5rem 1rem;
+}

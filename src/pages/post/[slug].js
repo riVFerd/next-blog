@@ -2,6 +2,16 @@ import getClient from "@/utils/connection";
 import Image from "next/image";
 import {PortableText} from "@portabletext/react";
 
+const component = {
+    marks: {
+        link: ({children}) => (
+            <a className="text-blue-500 cursor-pointer hover:underline">
+                {children}
+            </a>
+        )
+    },
+}
+
 export async function getServerSideProps({params}) {
     const post = await getClient().fetch('*[slug.current=="' + params.slug + '"]{title,slug,author,category,content,"imageUrl": thumbnail.asset->url}');
 
@@ -19,7 +29,9 @@ export default function BlogPost({post}) {
         <div className="flex flex-col items-center gap-4 p-4 dark:text-primary-light">
             <h1 className="font-bold text-xl text-center">{post.title}</h1>
             <Image src={post.imageUrl} alt="post-image" width="360" height="360"/>
-            <PortableText value={post.content}/>
+            <article id="article" className="w-full overflow-hidden md:w-1/2">
+                <PortableText value={post.content} components={component}/>
+            </article>
         </div>
     )
 }
