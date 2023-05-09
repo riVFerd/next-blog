@@ -13,7 +13,7 @@
 }
 
 #nprogress .bar {
-    background: #f6f6f6;
+    background: #007aff;
 
     position: fixed;
     z-index: 1031;
@@ -37,29 +37,6 @@
     -webkit-transform: rotate(3deg) translate(0px, -4px);
     -ms-transform: rotate(3deg) translate(0px, -4px);
     transform: rotate(3deg) translate(0px, -4px);
-}
-
-/* Remove these to get rid of the spinner */
-#nprogress .spinner {
-    display: block;
-    position: fixed;
-    z-index: 1031;
-    top: 15px;
-    right: 15px;
-}
-
-#nprogress .spinner-icon {
-    width: 18px;
-    height: 18px;
-    box-sizing: border-box;
-
-    border: solid 2px transparent;
-    border-top-color: #f6f6f6;
-    border-left-color: #f6f6f6;
-    border-radius: 50%;
-
-    -webkit-animation: nprogress-spinner 400ms linear infinite;
-    animation: nprogress-spinner 400ms linear infinite;
 }
 
 .nprogress-custom-parent {
