@@ -9,13 +9,6 @@ import PostCard from "@/components/PostCard";
 export async function getServerSideProps() {
     const featuredPost = await getClient().fetch('*[featured==true&&featured==true]{title,slug,author,category,content,"imageUrl": thumbnail.asset->url}');
     const postList = await getClient().fetch('*[_type=="post"&&featured==false]{publishedAt,title,slug,category,content,"imageUrl": thumbnail.asset->url,author->{nickname}}');
-    const posts = await getClient().fetch('*[_type=="post"&&featured==false]');
-
-    console.log(posts[0]);
-
-    featuredPost.map((post) => {
-        console.log(post)
-    });
 
     return {
         props: {
@@ -48,7 +41,7 @@ export default function Home({featuredPost, postList}) {
                  className="flex flex-wrap justify-center items-center gap-4 mx-4 mb-4 dark:text-primary-light">
                 {
                     postList.map((post) => (
-                        <PostCard key={post.slug} post={post}/>
+                        <PostCard key={post.slug.current} post={post}/>
                     ))
                 }
             </div>

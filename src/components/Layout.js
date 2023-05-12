@@ -10,7 +10,7 @@ export default function Layout({ children }) {
         const loadData = async () => {
             dispatch(setCategories(await fetchCategories()));
         };
-        loadData().then(res => console.log(res));
+        loadData().then();
     }, [dispatch]);
 
     return (
