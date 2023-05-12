@@ -4,10 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import {register} from 'swiper/element/bundle';
 import {useEffect} from "react";
+import PostCard from "@/components/PostCard";
 
 export async function getServerSideProps() {
     const featuredPost = await getClient().fetch('*[featured==true&&featured==true]{title,slug,author,category,content,"imageUrl": thumbnail.asset->url}');
-    const postList = await getClient().fetch('*[_type=="post"&&featured==false]{title,slug,category,content,"imageUrl": thumbnail.asset->url,author->{nickname}}');
+    const postList = await getClient().fetch('*[_type=="post"&&featured==false]{publishedAt,title,slug,category,content,"imageUrl": thumbnail.asset->url,author->{nickname}}');
+    const posts = await getClient().fetch('*[_type=="post"&&featured==false]');
+
+    console.log(posts[0]);
 
     featuredPost.map((post) => {
         console.log(post)
@@ -43,21 +47,8 @@ export default function Home({featuredPost, postList}) {
             <div id="posts-container"
                  className="flex flex-wrap justify-center items-center gap-4 mx-4 mb-4 dark:text-primary-light">
                 {
-                    postList.map((post, index) => (
-                        <Link key={index} href={`/post/${post.slug.current}`}
-                              className="transition-all lg:hover:scale-105">
-                            <div
-                                className="flex justify-center bg-white rounded-md overflow-hidden w-96 h-28 dark:bg-secondary-dark">
-                                <div className="w-1/2">
-                                    <Image src={post.imageUrl} className="object-cover rounded-l w-full h-full"
-                                           width="360" height="320" alt="post-img"/>
-                                </div>
-                                <div className="flex flex-col justify-between w-1/2 px-2 py-1">
-                                    <h1 className="text-sm font-bold h-3/4">{post.title}</h1>
-                                    <h1 className="text-xs font-bold text-end text-accent-blue">by {post.author.nickname}</h1>
-                                </div>
-                            </div>
-                        </Link>
+                    postList.map((post) => (
+                        <PostCard key={post.slug} post={post}/>
                     ))
                 }
             </div>
