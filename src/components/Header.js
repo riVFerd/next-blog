@@ -26,7 +26,7 @@ export default function Header() {
     }, []);
 
     return (
-        <header className="flex flex-col z-50 bg-primary-light dark:text-primary-light dark:bg-primary-dark">
+        <header className={"flex flex-col z-50 bg-primary-light dark:text-primary-light dark:bg-primary-dark " + (!isSearchBarFixed || "mb-16")}>
             <nav className="relative flex justify-between items-center bg-white h-16 rounded-b-lg dark:bg-secondary-dark">
                 <div className="flex items-center mx-2">
                     <Image src={logoPic} alt="blog logo" width="48"/>

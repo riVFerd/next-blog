@@ -4,8 +4,8 @@ import {PortableText} from "@portabletext/react";
 
 const component = {
     marks: {
-        link: ({children}) => (
-            <a className="text-blue-500 cursor-pointer hover:underline">
+        link: ({children, value}) => (
+            <a href={value.href} className="text-blue-500 cursor-pointer hover:underline" target="_blank">
                 {children}
             </a>
         )
