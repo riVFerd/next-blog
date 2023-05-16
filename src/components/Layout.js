@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import {useDispatch} from "react-redux";
 import {fetchCategories, setCategories} from "@/store/categoriesSlice";
 import ScrollToTop from "@/components/ScrollToTop";
+import Footer from "@/components/Footer";
 
 export default function Layout({ children }) {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function Layout({ children }) {
             <main>
                 {children}
             </main>
+            <Footer />
             <ScrollToTop />
         </div>
     )
