@@ -54,7 +54,7 @@ export default function BlogPost({post}) {
             <article id="article" className="w-full overflow-hidden md:w-1/2">
                 <PortableText value={post.content} components={component}/>
             </article>
-            <div className="container flex flex-col items-center text-primary-dark dark:text-primary-light">
+            <div className="container flex flex-col items-center text-primary-light">
                 {
                     isCommentVisible
                         ? <button className="px-4 py-2 bg-accent-blue rounded my-4 w-fit font-bold"

@@ -58,3 +58,11 @@
     100% { transform: rotate(360deg); }
 }
 
+/* remove blue things when click component on mobile */
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
