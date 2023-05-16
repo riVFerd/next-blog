@@ -32,7 +32,7 @@ export default function Header() {
                     <Image src={logoPic} alt="blog logo" width="48"/>
                     <Link href="/" className="text-xl font-bold text-primary-dark dark:text-primary-light">riVFerd</Link>
                 </div>
-                <MenuList state={isMenuOpen} categories={categories} />
+                <MenuList state={isMenuOpen} setState={setIsMenuOpen} categories={categories} />
                 <div className="flex items-center gap-4">
                     <ToggleDarkMode />
                     <MenuIcon state={isMenuOpen} setState={setIsMenuOpen} className="bg-primary-dark mr-2.5 dark:bg-primary-light" />

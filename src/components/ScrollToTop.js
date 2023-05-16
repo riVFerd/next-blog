@@ -28,7 +28,7 @@ export default function ScrollToTop() {
     }, []);
 
     return (
-        <a className={`fixed bottom-4 right-4 p-3 cursor-pointer rounded-3xl drop-shadow-lg text-primary-dark bg-white dark:text-primary-light dark:bg-secondary-dark ${isVisible ? 'visible' : 'hidden'}`} onClick={scrollToTop}>
+        <a className={`fixed bottom-4 right-4 p-3.5 cursor-pointer rounded-3xl drop-shadow-lg text-primary-dark bg-white active:scale-90 dark:text-primary-light dark:bg-secondary-dark ${isVisible ? 'visible' : 'hidden'}`} onClick={scrollToTop}>
             <BsArrowBarUp className="font-extrabold text-2xl"/>
         </a>
     );
