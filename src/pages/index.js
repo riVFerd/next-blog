@@ -1,7 +1,5 @@
 import FeaturedCard from "@/components/FeaturedCard";
 import getClient from "@/utils/connection";
-import Image from "next/image";
-import Link from "next/link";
 import {register} from 'swiper/element/bundle';
 import {useEffect} from "react";
 import PostCard from "@/components/PostCard";
@@ -25,7 +23,7 @@ export default function Home({featuredPost, postList}) {
     }, [])
 
     return (
-        <section className="flex flex-col items-center min-h-screen">
+        <section className="flex flex-col items-center w-full">
             <div className="w-full md:w-1/2">
                 <swiper-container loop="true" navigation="true" pagination="true">
                     {

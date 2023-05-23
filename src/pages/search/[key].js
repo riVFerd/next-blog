@@ -14,7 +14,7 @@ export async function getServerSideProps({params}) {
 export default function Search({posts}) {
     return (
         <div id="posts-container"
-             className="flex flex-wrap justify-center items-center gap-4 min-h-screen dark:text-primary-light">
+             className="flex flex-wrap justify-center items-center gap-4 dark:text-primary-light">
             {
                 (posts.length === 0)
                     ? <h1 className="text-2xl font-bold">Data not found</h1>

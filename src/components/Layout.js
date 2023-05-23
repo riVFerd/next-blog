@@ -16,9 +16,9 @@ export default function Layout({ children }) {
     }, [dispatch]);
 
     return (
-        <div className="bg-primary-light dark:bg-primary-dark">
+        <div className="bg-primary-light dark:bg-primary-dark flex flex-col min-h-screen">
             <Header />
-            <main>
+            <main className="flex-auto flex flex-col items-center justify-center py-4">
                 {children}
             </main>
             <Footer />
