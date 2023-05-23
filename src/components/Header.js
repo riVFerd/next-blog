@@ -26,19 +26,21 @@ export default function Header() {
     }, []);
 
     return (
-        <header className={"flex flex-col z-50 bg-primary-light dark:text-primary-light dark:bg-primary-dark " + (!isSearchBarFixed || "mb-16")}>
-            <nav className="relative flex justify-between items-center bg-white h-16 rounded-b-lg dark:bg-secondary-dark">
+        <header
+            className={"flex flex-col z-50 bg-primary-light dark:text-primary-light dark:bg-primary-dark " + (!isSearchBarFixed || "mb-16")}>
+            <nav
+                className="relative flex justify-between items-center bg-white h-16 rounded-b-lg dark:bg-secondary-dark">
                 <div className="flex items-center mx-2">
                     <Image src={logoPic} alt="blog logo" width="48"/>
                     <Link href="/" className="text-xl font-bold text-primary-dark dark:text-primary-light">riVFerd</Link>
                 </div>
-                <MenuList state={isMenuOpen} setState={setIsMenuOpen} categories={categories} />
                 <div className="flex items-center gap-4">
-                    <ToggleDarkMode />
-                    <MenuIcon state={isMenuOpen} setState={setIsMenuOpen} className="bg-primary-dark mr-2.5 dark:bg-primary-light" />
+                    <MenuList state={isMenuOpen} setState={setIsMenuOpen} categories={categories}/>
+                    <ToggleDarkMode/>
+                    <MenuIcon state={isMenuOpen} setState={setIsMenuOpen} className="bg-primary-dark mr-2.5 dark:bg-primary-light lg:hidden"/>
                 </div>
             </nav>
-            <SearchBar state={isSearchBarFixed} />
+            <SearchBar state={isSearchBarFixed}/>
         </header>
     );
 }
