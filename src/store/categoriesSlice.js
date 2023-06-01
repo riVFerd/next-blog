@@ -1,5 +1,4 @@
 import {createSlice} from "@reduxjs/toolkit";
-import getClient from "@/utils/connection";
 
 const categoriesSlice = createSlice({
     name: "categories",
