@@ -17,6 +17,7 @@ export const fetchCategories = async () => {
     return categories.map((category) => ({
         id: category._id,
         name: category.name,
+        slug: category.slug.current,
     }));
 };
 
