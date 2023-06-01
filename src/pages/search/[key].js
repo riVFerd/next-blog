@@ -1,8 +1,8 @@
-import getClient from "@/utils/connection";
 import PostCard from "@/components/PostCard";
+import getBaseUrl from "@/utils/getBaseUrl";
 
-export async function getServerSideProps({params}) {
-    const posts = await getClient().fetch('*[_type=="post"&&title match"' + params.key + '"]{publishedAt,title,slug,category,content,"imageUrl": thumbnail.asset->url,author->{nickname}}');
+export async function getServerSideProps({req, params}) {
+    const posts = await fetch(`${getBaseUrl(req)}/api/postList?key=${params.key}`).then((res) => res.json());
 
     return {
         props: {

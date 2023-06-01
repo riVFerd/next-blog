@@ -1,8 +1,8 @@
 import PostCard from "@/components/PostCard";
-import getClient from "@/utils/connection";
+import getBaseUrl from "@/utils/getBaseUrl";
 
-export async function getServerSideProps({params}) {
-    const posts = await getClient().fetch('*[_type=="post"&&category->name =="' + params.category + '"]{publishedAt,title,slug,category,content,"imageUrl": thumbnail.asset->url,author->{nickname}}');
+export async function getServerSideProps({req, params}) {
+    const posts = await fetch(`${getBaseUrl(req)}/api/postList?category=${params.category}`).then((res) => res.json());
 
     return {
         props: {
@@ -11,7 +11,7 @@ export async function getServerSideProps({params}) {
     }
 }
 
-export default function Category({ posts }) {
+export default function Category({posts}) {
     return (
         <div id="posts-container"
              className="flex flex-wrap justify-center items-center gap-4 dark:text-primary-light">

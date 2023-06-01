@@ -1,12 +1,13 @@
 import FeaturedCard from "@/components/FeaturedCard";
-import getClient from "@/utils/connection";
 import {register} from 'swiper/element/bundle';
 import {useEffect} from "react";
 import PostCard from "@/components/PostCard";
+import getBaseUrl from "@/utils/getBaseUrl";
 
-export async function getServerSideProps() {
-    const featuredPost = await getClient().fetch('*[featured==true&&featured==true]{title,slug,author,category,content,"imageUrl": thumbnail.asset->url}');
-    const postList = await getClient().fetch('*[_type=="post"&&featured==false]{publishedAt,title,slug,category,content,"imageUrl": thumbnail.asset->url,author->{nickname}}');
+export async function getServerSideProps({ req }) {
+    const baseUrl = getBaseUrl(req);
+    const featuredPost = await fetch(`${baseUrl}/api/postList?featured`).then((res) => res.json());
+    const postList = await fetch(`${baseUrl}/api/postList?unfeatured`).then((res) => res.json());
 
     return {
         props: {
