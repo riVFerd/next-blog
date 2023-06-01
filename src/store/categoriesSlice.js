@@ -12,7 +12,8 @@ const categoriesSlice = createSlice({
 });
 
 export const fetchCategories = async () => {
-    const categories = await getClient().fetch(`*[_type == "category"]`);
+    const response = await fetch("/api/categories");
+    const categories = await response.json();
 
     return categories.map((category) => ({
         id: category._id,
