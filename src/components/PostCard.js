@@ -13,7 +13,7 @@ export default function PostCard({post}) {
                            width="360" height="320" alt="post-img"/>
                 </div>
                 <div className="flex flex-col justify-between w-1/2 px-2 py-1">
-                    <h1 className="text-sm font-bold h-3/4">{post.title}</h1>
+                    <h1 className="text-sm font-bold h-3/4 overflow-hidden">{post.title}</h1>
                     <div className="flex justify-between">
                         <h1 className="text-xs font-bold text-accent-blue">{new Date(post.publishedAt).toLocaleDateString()}</h1>
                         <h1 className="text-xs font-bold text-end text-accent-blue">by {post.author['nickname']}</h1>
