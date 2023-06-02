@@ -1,5 +1,4 @@
 import {createSlice} from "@reduxjs/toolkit";
-import getClient from "@/utils/connection";
 
 const categoriesSlice = createSlice({
     name: "categories",
@@ -12,11 +11,13 @@ const categoriesSlice = createSlice({
 });
 
 export const fetchCategories = async () => {
-    const categories = await getClient().fetch(`*[_type == "category"]`);
+    const response = await fetch("/api/categories");
+    const categories = await response.json();
 
     return categories.map((category) => ({
         id: category._id,
         name: category.name,
+        slug: category.slug.current,
     }));
 };
 

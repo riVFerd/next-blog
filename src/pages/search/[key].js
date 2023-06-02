@@ -1,25 +1,22 @@
-import getClient from "@/utils/connection";
-import PostCard from "@/components/PostCard";
+import getBaseUrl from "@/utils/getBaseUrl";
+import PostsContainer from "@/components/PostsContainer";
 
-export async function getServerSideProps({params}) {
-    const posts = await getClient().fetch('*[_type=="post"&&title match"' + params.key + '"]{publishedAt,title,slug,category,content,"imageUrl": thumbnail.asset->url,author->{nickname}}');
+const PAGE_SIZE = 6;
+const POST_API_URL = `/api/postList?pageSize=${PAGE_SIZE}`;
+
+export async function getServerSideProps({req, params}) {
+    const posts = await fetch(`${getBaseUrl(req)}${POST_API_URL}&key=${params.key}`).then((res) => res.json());
 
     return {
         props: {
-            posts: posts
+            posts: posts,
+            params: params
         }
     }
 }
 
-export default function Search({posts}) {
+export default function Search({posts, params}) {
     return (
-        <div id="posts-container"
-             className="flex flex-wrap justify-center items-center gap-4 dark:text-primary-light">
-            {
-                (posts.length === 0)
-                    ? <h1 className="text-2xl font-bold">Data not found</h1>
-                    : posts.map((post) => (<PostCard key={post.slug} post={post}/>))
-            }
-        </div>
+        <PostsContainer postList={posts} baseUrl={`${POST_API_URL}&key=${params.key}`} pageSize={PAGE_SIZE}/>
     )
 }

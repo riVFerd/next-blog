@@ -28,7 +28,7 @@ export default function MenuList({state, setState, categories}) {
                     <ul className={`flex flex-col gap-1 transition-all px-4 overflow-hidden duration-300 ${isDropdownOpen ? 'max-h-screen' : 'max-h-0'} lg:absolute lg:left-0 lg:bg-white lg:p-0 lg:rounded-b-xl dark:lg:bg-secondary-dark`}>
                         {
                             categories.map((category) =>
-                                <Link key={category.id} href={`/post/category/${category.name}`}
+                                <Link key={category.id} href={`/post/category/${category.slug}`}
                                       onClick={handleClickCategory}>
                                     <li className="hover:bg-primary-light dark:hover:bg-primary-dark lg:px-4 lg:py-2">
                                         {category.name}

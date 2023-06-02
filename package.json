@@ -12,9 +12,12 @@
     "@portabletext/react": "^3.0.0",
     "@reduxjs/toolkit": "^1.9.5",
     "autoprefixer": "10.4.14",
+    "class-variance-authority": "^0.6.0",
+    "clsx": "^1.2.1",
     "disqus-react": "^1.1.5",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
+    "lucide-react": "^0.233.0",
     "next": "13.3.0",
     "next-sanity": "^4.1.7",
     "next-sanity-image": "^6.0.0",
@@ -26,7 +29,10 @@
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
+    "sqr": "^1.0.1",
     "swiper": "^9.3.0",
-    "tailwindcss": "3.3.1"
+    "tailwind-merge": "^1.13.0",
+    "tailwindcss": "3.3.1",
+    "tailwindcss-animate": "^1.0.5"
   }
 }

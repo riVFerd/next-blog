@@ -1,12 +1,16 @@
 import FeaturedCard from "@/components/FeaturedCard";
-import getClient from "@/utils/connection";
 import {register} from 'swiper/element/bundle';
 import {useEffect} from "react";
-import PostCard from "@/components/PostCard";
+import getBaseUrl from "@/utils/getBaseUrl";
+import PostsContainer from "@/components/PostsContainer";
 
-export async function getServerSideProps() {
-    const featuredPost = await getClient().fetch('*[featured==true&&featured==true]{title,slug,author,category,content,"imageUrl": thumbnail.asset->url}');
-    const postList = await getClient().fetch('*[_type=="post"&&featured==false]{publishedAt,title,slug,category,content,"imageUrl": thumbnail.asset->url,author->{nickname}}');
+const PAGE_SIZE = 6;
+const POST_API_URL = `/api/postList?unfeatured&pageSize=${PAGE_SIZE}`;
+
+export async function getServerSideProps({ req }) {
+    const baseUrl = getBaseUrl(req);
+    const featuredPost = await fetch(`${baseUrl}/api/postList?featured`).then((res) => res.json());
+    const postList = await fetch(`${baseUrl}${POST_API_URL}`).then((res) => res.json());
 
     return {
         props: {
@@ -35,14 +39,7 @@ export default function Home({featuredPost, postList}) {
                     }
                 </swiper-container>
             </div>
-            <div id="posts-container"
-                 className="flex flex-wrap justify-center items-center gap-4 mx-4 mb-4 dark:text-primary-light">
-                {
-                    postList.map((post) => (
-                        <PostCard key={post.slug.current} post={post}/>
-                    ))
-                }
-            </div>
+            <PostsContainer postList={postList} baseUrl={POST_API_URL} pageSize={PAGE_SIZE}/>
         </section>
     )
 }
