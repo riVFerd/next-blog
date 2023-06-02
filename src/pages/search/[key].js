@@ -17,6 +17,6 @@ export async function getServerSideProps({req, params}) {
 
 export default function Search({posts, params}) {
     return (
-        <PostsContainer postList={posts} baseUrl={`${POST_API_URL}&key=${params.key}`}/>
+        <PostsContainer postList={posts} baseUrl={`${POST_API_URL}&key=${params.key}`} pageSize={PAGE_SIZE}/>
     )
 }

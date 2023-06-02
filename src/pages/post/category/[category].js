@@ -17,6 +17,6 @@ export async function getServerSideProps({req, params}) {
 
 export default function Category({posts, params}) {
     return (
-        <PostsContainer postList={posts} baseUrl={`${POST_API_URL}&category=${params.category}`}/>
+        <PostsContainer postList={posts} baseUrl={`${POST_API_URL}&category=${params.category}`} pageSize={PAGE_SIZE}/>
     )
 }

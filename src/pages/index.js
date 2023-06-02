@@ -39,7 +39,7 @@ export default function Home({featuredPost, postList}) {
                     }
                 </swiper-container>
             </div>
-            <PostsContainer postList={postList} baseUrl={POST_API_URL}/>
+            <PostsContainer postList={postList} baseUrl={POST_API_URL} pageSize={PAGE_SIZE}/>
         </section>
     )
 }
