@@ -21,7 +21,7 @@ export default function ToggleDarkMode() {
     }, [isDarkMode])
 
     return (
-        <button onClick={handleDarkModeSwitch} className="p-2 text-xl">
+        <button onClick={handleDarkModeSwitch} className="p-2 text-xl focus:outline-0">
             {isDarkMode ? <RiMoonClearFill /> : <FaSun />}
         </button>
     )

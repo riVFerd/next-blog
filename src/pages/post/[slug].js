@@ -48,13 +48,13 @@ export default function BlogPost({post}) {
     }
 
     return (
-        <div className="flex flex-col items-center gap-4 p-4 dark:text-primary-light">
+        <div className="flex flex-col items-center gap-4 dark:text-primary-light w-full">
             <h1 className="font-bold text-xl text-center px-2 md:w-1/2 md:px-0">{post.title}</h1>
             <Image src={post.imageUrl} className="px-4 md:px-0" alt="post-image" width="360" height="360"/>
             <article id="article" className="w-full overflow-hidden md:w-1/2">
                 <PortableText value={post.content} components={component}/>
             </article>
-            <div className="container flex flex-col items-center text-primary-light">
+            <div className="container flex flex-col items-center text-primary-light p-4">
                 {
                     isCommentVisible
                         ? <button className="px-4 py-2 bg-accent-blue rounded my-4 w-fit font-bold"
