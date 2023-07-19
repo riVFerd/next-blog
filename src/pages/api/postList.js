@@ -13,7 +13,7 @@ export default async function handler(req, res) {
             ${req.query['category'] ? `&&category->slug.current =="${req.query['category']}"` : ''}
             ${req.query['key'] ? `&&title match "${req.query['key']}"` : ''}
          ]{
-            publishedAt,title,slug,category,"imageUrl": thumbnail.asset->url,author->{nickname}
+            publishedAt,title,slug,category,"imageUrl": thumbnail.asset->url,author->{nickname},content
         } | order(publishedAt desc) 
         [${start}...${end}]`
     );
