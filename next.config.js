@@ -12,7 +12,10 @@ const nextConfig = {
                 hostname: "cdn.sanity.io",
             }
         ]
-    }
+    },
+    apiBodyParser: {
+        sizeLimit: '50mb',
+    },
 }
 
 module.exports = nextConfig
